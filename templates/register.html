@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block basecontent %}
+
+
+<div class="container">
+	<div class="main">
+		<div class="row">
+			<div class="col-sm-6 ">
+				<h2>New User? <span> Create Account </span></h2>
+				<form method="post" action="{% url 'register' %}">{% csrf_token %}
+			        <div class="form-group">
+						{% if register_success %}
+							<p class="alert alert-info">You have register successfully. <a href ="{% url 'login_user' %}">Click Here</a> to go Login</p>  </br> <a href ="{% url 'home'%}">Click Here</a> to go back to home page</p>
+						{% endif %}
+			        	{% crispy form %}
+					</div>
+			        <div class="form-group">
+						<p>By registering here, you agree to Company's Terms of Use.</p></br>
+					</div>
+			    </form>
+		    </div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
